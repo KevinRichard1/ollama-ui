@@ -1,15 +1,30 @@
-import ChatPage from './Pages/ChatPage'
-import Header from './Components/Header'
+import React from 'react';
+import ChatPage from './Pages/ChatPage';
+import Header from './Components/Header';
 import Sidebar from './Components/Sidebar';
 
 function App() {
+  const [isSidebarOpen, setIsSidebarOpen] = React.useState(true);
+
+  const handleToggleSidebar = () => {
+    setIsSidebarOpen((prev) => !prev);
+  };
+
   return (
-    <div className='items-center'>
-      <Header/>
-      <Sidebar/>
-      <ChatPage/>
+    <div className="relative flex h-screen">
+      {/* Sidebar */}
+      <Sidebar isSidebarOpen={isSidebarOpen} onToggleSidebar={handleToggleSidebar} />
+
+      {/* Main Content */}
+      <div className="flex-grow flex flex-col">
+        <Header
+          onToggleSidebar={handleToggleSidebar}
+          isSidebarOpen={isSidebarOpen}
+        />
+        <ChatPage />
+      </div>
     </div>
-  );
+  )
 }
 
 export default App;

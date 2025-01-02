@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Header = () => {
+const Header = ({ onToggleSidebar, isSidebarOpen }) => {
   return (
-    <div className="items-center justify-center flex flex-row w-full">
-      <h1 className='text-xl'>Ollama UI</h1>
+    <div className="h-16 bg-gray-900 text-white flex items-center px-4">
+      <button onClick={onToggleSidebar} className="mr-4 bg-gray-700 p-2 rounded hover:bg-gray-600"> {isSidebarOpen ? '⮜' : '☰'} </button>
     </div>
   )
 }
