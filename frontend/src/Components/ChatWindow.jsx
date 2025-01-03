@@ -19,8 +19,8 @@ const ChatWindow = () => {
           <div
             className={`p-3 rounded-lg max-w-xs ${
               message.role === 'user'
-                ? 'bg-blue-500 text-white'
-                : 'bg-gray-200 text-black'
+                ? 'bg-slate-900 text-gray-300'
+                : 'bg-slate-500 text-gray-900'
             }`}
           >
             {message.content}

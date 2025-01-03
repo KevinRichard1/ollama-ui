@@ -12,16 +12,13 @@ function App() {
 
   return (
     <div className="relative flex h-screen">
-      {/* Sidebar */}
       <Sidebar isSidebarOpen={isSidebarOpen} onToggleSidebar={handleToggleSidebar} />
-
-      {/* Main Content */}
       <div className="flex-grow flex flex-col">
         <Header
           onToggleSidebar={handleToggleSidebar}
           isSidebarOpen={isSidebarOpen}
         />
-        <ChatPage />
+        <ChatPage/>
       </div>
     </div>
   )
