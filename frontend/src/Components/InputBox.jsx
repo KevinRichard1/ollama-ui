@@ -8,11 +8,9 @@ const InputBox = () => {
   };
 
   const handleTextareaResize = (event) => {
-    // Reset the height to auto to shrink if the user deletes content
     event.target.style.height = 'auto';
-    // Set the height to the scrollHeight, but limit it to a max height
-    const maxHeight = 200; // Define a max height for the textarea
-    const newHeight = Math.min(event.target.scrollHeight, maxHeight); // Prevent it from growing indefinitely
+    const maxHeight = 200;
+    const newHeight = Math.min(event.target.scrollHeight, maxHeight);
     event.target.style.height = `${newHeight}px`;
   };
 
