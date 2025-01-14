@@ -1,26 +1,21 @@
-import React from 'react'
+import React from 'react';
 
-const ChatWindow = () => {
-  const messages = [
-    { role: 'ai', content: 'Hello! How can I assist you?' },
-    { role: 'user', content: 'What can you do?' },
-    { role: 'ai', content: 'I can help you with various tasks like coding and chatting.' },
-  ];
+const ChatWindow = ({ messages }) => {
+  console.log('Messages:', messages); // Debugging
 
   return (
     <div className="flex-grow overflow-y-auto p-4">
+      {messages.length === 0 && <p className="text-center text-gray-500">No messages yet. Start chatting!</p>}
       {messages.map((message, index) => (
         <div
           key={index}
-          className={`mb-4 flex ${
-            message.role === 'user' ? 'justify-end' : 'justify-start'
-          }`}
+          className={`mb-4 flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
         >
           <div
-            className={`p-3 rounded-lg max-w-xl ${
+            className={`p-3 rounded-lg min-w-[30px] max-w-xl ${
               message.role === 'user'
-                ? 'bg-[#7d7d74] text-gray-200 dark:bg-slate-900 dark:text-gray-300'
-                : 'bg-[#b3aea5] text-gray-900 dark:bg-slate-500'
+                ? 'bg-gray-300 text-black'
+                : 'bg-gray-500 text-white'
             }`}
           >
             {message.content}
@@ -28,7 +23,7 @@ const ChatWindow = () => {
         </div>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default ChatWindow
+export default ChatWindow;

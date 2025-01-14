@@ -1,10 +1,18 @@
 import React, { useState } from 'react';
 
-const InputBox = () => {
-  const [value, setValue] = useState('');
+const InputBox = ({ onSendMessage }) => {
+  const [message, setMessage] = useState('');
 
   const handleChange = (event) => {
-    setValue(event.target.value);
+    setMessage(event.target.value);
+  };
+
+  const handleSendMessage = (event) => {
+    event.preventDefault();
+    if (message.trim() === '') return;
+
+    onSendMessage(message);
+    setMessage(''); 
   };
 
   const handleTextareaResize = (event) => {
@@ -17,7 +25,7 @@ const InputBox = () => {
   return (
     <div className="w-[48%] bg-[#b3b1a5] dark:bg-gray-900 p-5 mb-4 rounded-xl">
       <textarea
-        value={value}
+        value={message}
         onChange={handleChange}
         onInput={handleTextareaResize}
         placeholder="Enter Text"
@@ -29,7 +37,8 @@ const InputBox = () => {
         }}
       />
       <button
-        className="h-9 ml-4 bg-[#7d7d74] text-[#fff9eb] hover:bg-[#5b5b54] dark:bg-slate-600 dark:hover:bg-slate-500 dark:text-white py-1 px-2 rounded-xl"
+        className="h-9 ml-8 bg-[#7d7d74] text-[#fff9eb] hover:bg-[#5b5b54] dark:bg-slate-600 dark:hover:bg-slate-500 dark:text-white py-1 px-2 rounded-xl"
+        onClick={handleSendMessage}
       >
         ▲
       </button>
